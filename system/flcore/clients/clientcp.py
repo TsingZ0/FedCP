@@ -63,8 +63,18 @@ class clientCP:
 
 
     def set_head_g(self, head):
-        headw_p = self.model.head_g.weight.data.clone()
-        headw_g = head.weight.data.clone()
+        if isinstance(head, nn.Sequential):
+            headw_p = None
+            headw_g = None
+            for (n, pg), (_, p) in zip(self.model.head_g.named_parameters(), head.named_parameters()):
+                if 'weight' in n:
+                    headw_p = torch.matmul(pg, headw_p) if headw_p is not None else pg
+                    headw_g = torch.matmul(p, headw_g) if headw_g is not None else p
+        else:
+            headw_p = self.model.head_g.weight.data.clone()
+            headw_g = head.weight.data.clone()
+        headw_p.detach_()
+        headw_g.detach_()
         self.context = torch.sum(abs(headw_p - headw_g), dim=0, keepdim=True)
         
         for new_param, old_param in zip(head.parameters(), self.model.head_g.parameters()):
@@ -116,7 +126,13 @@ class clientCP:
                 test_num += y.shape[0]
 
                 y_prob.append(F.softmax(output).detach().cpu().numpy())
-                y_true.append(label_binarize(y.detach().cpu().numpy(), classes=np.arange(self.num_classes)))
+                nc = self.num_classes
+                if self.num_classes == 2:
+                    nc += 1
+                lb = label_binarize(y.detach().cpu().numpy(), classes=np.arange(nc))
+                if self.num_classes == 2:
+                    lb = lb[:, :2]
+                y_true.append(lb)
 
         y_prob = np.concatenate(y_prob, axis=0)
         y_true = np.concatenate(y_true, axis=0)
