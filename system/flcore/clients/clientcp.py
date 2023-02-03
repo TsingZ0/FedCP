@@ -63,19 +63,9 @@ class clientCP:
 
 
     def set_head_g(self, head):
-        if isinstance(head, nn.Sequential):
-            headw_p = None
-            headw_g = None
-            for (n, pg), (_, p) in zip(self.model.head_g.named_parameters(), head.named_parameters()):
-                if 'weight' in n:
-                    headw_p = torch.matmul(pg, headw_p) if headw_p is not None else pg
-                    headw_g = torch.matmul(p, headw_g) if headw_g is not None else p
-        else:
-            headw_p = self.model.head_g.weight.data.clone()
-            headw_g = head.weight.data.clone()
+        headw_p = self.model.model.head.weight.data.clone()
         headw_p.detach_()
-        headw_g.detach_()
-        self.context = torch.sum(abs(headw_p - headw_g), dim=0, keepdim=True)
+        self.context = torch.sum(headw_p, dim=0, keepdim=True)
         
         for new_param, old_param in zip(head.parameters(), self.model.head_g.parameters()):
             old_param.data = new_param.data.clone()
@@ -91,7 +81,7 @@ class clientCP:
             self.save_item(it, 'item_' + str(idx) + '_' + tag, item_path)
 
     def generate_upload_head(self):
-        for (np, pp), (ng, pg) in zip(self.model.model.predictor.named_parameters(), self.model.pred_g.named_parameters()):
+        for (np, pp), (ng, pg) in zip(self.model.model.head.named_parameters(), self.model.head_g.named_parameters()):
             pg.data = pp * 0.5 + pg * 0.5
 
     def test_metrics(self):
