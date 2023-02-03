@@ -124,7 +124,7 @@ class FedCP:
 
             for client in self.selected_clients:
                 client.train_cs_model()
-                client.collect_head()
+                client.generate_upload_head()
 
             self.receive_models()
             self.aggregate_parameters()

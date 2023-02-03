@@ -89,17 +89,10 @@ class clientCP:
         self.save_item(self.pm_test, 'pm_test' + '_' + tag, item_path)
         for idx, it in enumerate(items):
             self.save_item(it, 'item_' + str(idx) + '_' + tag, item_path)
-    
-    def collect_head(self):
-        pm = [p.unsqueeze(0) for p in self.model.gate.pm]
-        gm = [g.unsqueeze(0) for g in self.model.gate.gm]
-        pm = torch.mean(torch.cat(pm, dim=0), dim=0, keepdim=True)
-        gm = torch.mean(torch.cat(gm, dim=0), dim=0, keepdim=True)
-        pm = torch.tile(pm, (self.num_classes, 1))
-        gm = torch.tile(gm, (self.num_classes, 1))
-        for (np, pp), (ng, pg) in zip(self.model.model.head.named_parameters(), self.model.head_g.named_parameters()):
-            if 'weight' in np:
-                pg.data = pp * pm + pg * gm
+
+    def generate_upload_head(self):
+        for (np, pp), (ng, pg) in zip(self.model.model.predictor.named_parameters(), self.model.pred_g.named_parameters()):
+            pg.data = pp * 0.5 + pg * 0.5
 
     def test_metrics(self):
         testloader = self.load_test_data()
