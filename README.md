@@ -1,6 +1,6 @@
 # Introduction
 
-This is the implementation of our paper *FedCP: Separating Feature Information for Personalized Federated Learning via Conditional Policy*
+This is the implementation of our paper *FedCP: Separating Feature Information for Personalized Federated Learning via Conditional Policy* (accepted by KDD 2023)
 
 
 # Dataset
