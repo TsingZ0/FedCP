@@ -1,6 +1,12 @@
 # Introduction
 
-This is the implementation of our paper *FedCP: Separating Feature Information for Personalized Federated Learning via Conditional Policy* (accepted by KDD 2023)
+This is the implementation of our paper *FedCP: Separating Feature Information for Personalized Federated Learning via Conditional Policy* (accepted by KDD 2023). 
+
+**TL;DR**: Existing personalized federated learning (pFL) mehtods focus on exploiting global and personalized information in model parameters rather than the source of information: ***data***, so we propose FedCP to automatically separate global and personalized information from data (i.e., feature representations) in iterative federated learning procedure, as shown in the following figures. 
+
+![](./figs/example.png)
+
+![](./figs/feature_separation.png)
 
 
 # Dataset
@@ -19,6 +25,12 @@ Due to the file size limitation of GitHub repository, we only upload the mnist d
     - `./trainmodel/models.py`: the code for backbones. 
 - `./utils`:
     - `data_utils.py`: the code to read the dataset. 
+
+
+# Conditional Policy Network (CPN)
+
+![](./figs/CPN.png)
+
 
 # Simulation
 
