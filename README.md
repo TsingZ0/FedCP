@@ -11,7 +11,7 @@ This is the implementation of our paper [*FedCP: Separating Feature Information 
 
 # Dataset
 
-Due to the file size limitation of GitHub repository, we only upload the mnist dataset with the default practical setting ($\beta=0.1$). You can generate other datasets based on my another repository [PFL-Non-IID](https://github.com/TsingZ0/PFL-Non-IID). 
+Due to the file size limitation of GitHub repository, we only upload the mnist dataset with the default practical setting ($\beta=0.1$). You can generate other datasets based on my other repository [PFL-Non-IID](https://github.com/TsingZ0/PFL-Non-IID). 
 
 
 # System
@@ -27,7 +27,7 @@ Due to the file size limitation of GitHub repository, we only upload the mnist d
     - `data_utils.py`: the code to read the dataset. 
 
 
-# Conditional Policy Network (CPN)
+# Federated Conditional Policy (FedCP)
 
 ![](./figs/CPN.png)
 
