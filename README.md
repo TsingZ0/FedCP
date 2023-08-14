@@ -2,6 +2,20 @@
 
 This is the implementation of our paper [*FedCP: Separating Feature Information for Personalized Federated Learning via Conditional Policy*](https://arxiv.org/abs/2307.01217) (accepted by KDD 2023). 
 
+- [Oral PPT](./FedCP.pdf)
+
+
+**Citation**
+
+```
+@inproceedings{Zhang2023fedcp,
+  author = {Zhang, Jianqing and Hua, Yang and Wang, Hao and Song, Tao and Xue, Zhengui and Ma, Ruhui and Guan, Haibing},
+  title = {FedCP: Separating Feature Information for Personalized Federated Learning via Conditional Policy},
+  year = {2023},
+  booktitle = {Proceedings of the 29th ACM SIGKDD Conference on Knowledge Discovery and Data Mining}
+}
+```
+
 **TL;DR**: Existing personalized federated learning (pFL) mehtods focus on exploiting global and personalized information in model parameters rather than the source of information: ***data***, so we propose FedCP to automatically separate global and personalized information from data (i.e., feature representations) in iterative federated learning procedure, as shown in the following figures. 
 
 ![](./figs/example.png)
