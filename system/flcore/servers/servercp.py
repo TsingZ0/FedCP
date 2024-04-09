@@ -31,7 +31,7 @@ class FedCP:
         self.times = times
         self.eval_gap = args.eval_gap
 
-        in_dim = list(args.model.feature_extractor.parameters())[-1].shape[0]
+        in_dim = list(args.model.head.parameters())[0].shape[1]
         cs = ConditionalSelection(in_dim, in_dim).to(args.device)
 
         for i in range(self.num_clients):
