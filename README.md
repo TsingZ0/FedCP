@@ -49,9 +49,9 @@ Due to the file size limitation of GitHub repository, we only upload the mnist d
 # Simulation
 
 ## Environments
-With the installed [conda](https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh), we can run this platform in a conda virtual environment called *fl_torch*. 
+With the installed [conda](https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh), we can run this platform in a conda virtual environment called *fl*. 
 ```
-conda env create -f env_linux.yaml # for Linux
+conda env create -f env_cuda_latest.yaml # for Linux
 ```
 
 
