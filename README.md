@@ -23,9 +23,9 @@ This is the implementation of our paper [*FedCP: Separating Feature Information 
 ![](./figs/feature_separation.png)
 
 
-# Dataset
+# Datasets and Environments
 
-Due to the file size limitation of GitHub repository, we only upload the mnist dataset with the default practical setting ($\beta=0.1$). You can generate other datasets based on my other repository [PFLlib](https://github.com/TsingZ0/PFLlib). 
+Due to the file size limitation of GitHub repository, we only upload the mnist dataset with the default practical setting ($\beta=0.1$). You can generate other datasets and environment settings based on my other repository [PFLlib](https://github.com/TsingZ0/PFLlib). 
 
 
 # System
@@ -46,16 +46,7 @@ Due to the file size limitation of GitHub repository, we only upload the mnist d
 ![](./figs/CPN.png)
 
 
-# Simulation
-
-## Environments
-With the installed [conda](https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh), we can run this platform in a conda virtual environment called *fl*. 
-```
-conda env create -f env_cuda_latest.yaml # for Linux
-```
-
-
-## Training and Evaluation
+# Training and Evaluation
 
 All codes corresponding to **FedCP** are stored in `./system`. Just run the following commands.
 
